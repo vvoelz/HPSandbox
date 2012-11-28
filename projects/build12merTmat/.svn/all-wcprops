@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repo/!svn/ver/315/HPSandbox/trunk/HPSandBox/projects/build12merTmat
+END
+microT.mtx
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/microT.mtx
+END
+microstates.dat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/microstates.dat
+END
+enumerate_Tprobs.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/enumerate_Tprobs.py
+END
+mc12.conf
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/mc12.conf
+END
+microT_AAAAAA.mtx.jumps
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/microT_AAAAAA.mtx.jumps
+END
+getPops.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repo/!svn/ver/242/HPSandbox/trunk/HPSandBox/projects/build12merTmat/getPops.py
+END
+microT_AAAAAA.mtx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/build12merTmat/microT_AAAAAA.mtx
+END
+reweightT.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repo/!svn/ver/315/HPSandbox/trunk/HPSandBox/projects/build12merTmat/reweightT.py
+END
+runme_reweight.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repo/!svn/ver/222/HPSandbox/trunk/HPSandBox/projects/build12merTmat/runme_reweight.py
+END

@@ -1,0 +1,58 @@
+# README toy12mer
+# 
+# This project contains a series of scripts used to enumerate all the possible
+# microstates and transition matrix of the 12-mer HP sequence   HPHPHPHPPHPH
+# 
+#      P-P
+#      | |
+#      H H-P
+#      |   |
+#      P-H H H(1)
+#        |   |
+#        P-H-P
+
+############################
+# Step 0.  Make sure the HPSANDBOXHOME environment variable is defined 
+
+export HPSANDBOXHOME=/Users/vince/scripts/HPSandbox/trunk/HPSandbox
+
+############################ 
+# Step 1. Enumerate 12mer conformationas, and build a "blank" microstate transition matrix,
+# where the H-H interaction energy is 0 kcal/mol
+
+python enumerate_Tprobs.py mc12.conf
+
+# This will create: 
+#    microstates.dat  - info and indices of all 15037 microstate conformations
+#    microT.mtx       - The microstate transition matrix
+#    mcrex12_data     - an empty directory of output files, which you can ignore.
+#                       This is created by the HPSandbox objects to store traj data
+
+###########################
+# Step 2. Next, we will "reweight" this "blank" transition matrix to reflect a particular sequence of the six 
+# hydrophobic residues, where the interaction energies are taken from Miyazawa and Jernigan (JMB 1996)
+
+python reweightT.py microT.mtx microT_AAAAAA.mtx microstates.dat AAAAAA
+
+# This will write a file AAAAAA.dat containing the stability and slowest, next-slowest implied timescales
+# NOTE: To reweight matrices for a series of sequences, you can modify the runme_reweight.py wrapper script.
+
+###########################
+# Step 3.  Transition matrix in hand, we can now sample transition counts.  Three scripts facilitate this
+# (this scripts should probably be combined at some point):
+
+# sample_equil.py   - sample n_i counts from each state i, in numbers proportional
+#                     to the equilibrium populations
+# sample_uniform.py - sample N transitions counts starting from each state
+# sample_traj.py    - generate a Markov chain trajectory (i.e. like dynamics) to sample counts
+
+python sample_traj.py microT_AAAAAA.mtx microstates.dat 150000 10 traj 
+
+# This will create a series of 10 (cumulative) transition count matrices, each containing 150000 more
+# samples than the next:  tCounts.traj.traj.150000.0.mtx, .... tCounts.traj.traj.150000.9.mtx
+# pickling jumps to microT_AAAAAA.mtx.jumps ...
+# 
+# NOTE: in order to efficienty create Markov chains, a hash table of possible jumps are stored in a hash table
+# written to file as a pickled dictionary.  If this file already exists, it will read in it.  If this file
+# does not exist, it will create a new one
+

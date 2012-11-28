@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repo/!svn/ver/279/HPSandbox/trunk/HPSandBox/projects/sequenceDesign
+END
+testSequences.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repo/!svn/ver/279/HPSandbox/trunk/HPSandBox/projects/sequenceDesign/testSequences.py
+END
+plotSeqData.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repo/!svn/ver/277/HPSandbox/trunk/HPSandBox/projects/sequenceDesign/plotSeqData.py
+END
+seqdata.dat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repo/!svn/ver/277/HPSandbox/trunk/HPSandBox/projects/sequenceDesign/seqdata.dat
+END
+perturbT.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repo/!svn/ver/279/HPSandbox/trunk/HPSandBox/projects/sequenceDesign/perturbT.py
+END

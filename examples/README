@@ -1,0 +1,47 @@
+README: HPSandbox example programs
+Last Updated:  May 29, 2007
+
+Included are two example programs to illustrate the use of the HPSandbox objects
+
+*** enumerate.py ***
+
+usage:  enumerate.py <configfile>
+Try:    enumerate.py enumerate.conf
+
+This program will read in an HP chain specified in the configure file,
+and perform a full enumeration of conformational space.
+
+The problem tablulates:
+    1) the density of states (in energies/contacts)
+    2) the number density of unique contact states, i.e. disjoint collections
+       of microscopic conformations all sharing a unique set of interresidue contacts. 
+
+These values are printed as output.
+
+
+
+*** mcrex.py ***
+
+usage:  mcrex.py <configfile>
+Try:    mcrex.py mcrex.conf
+
+This program will read in an HP chain and run parameters specified in the configure file,
+and perform a replica exchange Monte Carlo simulation.
+
+For the example "mcrex.conf", an 11-mer sequence is simulated, and the program ends when
+the native conformation (contact state) is found.
+A directory of results is output to directory ./mcrex_data
+
+
+*** IMPORTANT SETUP NOTES!!! ***
+
+In order to get these example scripts to work correctly, you need to set up the following:
+
+1) The HPSandbox directory (i.e python module) must be defined in your PYTHONPATH environment variable
+2) The mcrex.conf file needs to be changed to reflect the absolute pathname of the sequences/clist/hp**  direectory
+   containing flat files listing native contact states for each foldable sequence.  
+
+
+Vincent Voelz
+vvoelz@stanford.edu
+

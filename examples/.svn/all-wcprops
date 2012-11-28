@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repo/!svn/ver/103/HPSandbox/trunk/HPSandBox/examples
+END
+template.conf
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/template.conf
+END
+enumerate16.conf
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/enumerate16.conf
+END
+mcrex.conf
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/mcrex.conf
+END
+enumerate19.conf
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/enumerate19.conf
+END
+mcrex.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/mcrex.py
+END
+mc.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/mc.py
+END
+enumerate.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/enumerate.py
+END
+enumerate12.conf
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/enumerate12.conf
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repo/!svn/ver/102/HPSandbox/trunk/HPSandBox/examples/README
+END

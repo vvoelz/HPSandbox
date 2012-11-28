@@ -1,0 +1,19 @@
+HPSTRING                PHPPHPHPPHH
+INITIALVEC              [1, 0, 1, 2, 1, 2, 1, 2, 3, 3]
+randseed                345
+eps                     -5.0
+RESTRAINED_STATE        [(1, 4), (6, 9)]
+KSPRING                 0.0
+NREPLICAS               8
+REPLICATEMPS            [275.0, 300.0, 325.0, 350.0, 400.0, 450.0, 500.0, 600.0]
+MCSTEPS                 5000
+SWAPEVERY               5000
+SWAPMETHOD              random pair
+MOVESET                 MS2
+EXPDIR                  ./testing
+PRINTEVERY              100
+TRJEVERY                100
+ENEEVERY                100
+NATIVEDIR               /Users/vincentvoelz/scripts/HPSandbox/sequences/clist/hp11
+STOPATNATIVE            1
+

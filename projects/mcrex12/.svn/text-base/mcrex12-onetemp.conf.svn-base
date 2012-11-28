@@ -1,0 +1,16 @@
+HPSTRING                HPHPHPHPPHPH
+INITIALVEC              [0,0,0,0,0,0,0,0,0,0,0]
+randseed                979
+eps                     0.0
+NREPLICAS               1
+REPLICATEMPS            [300.0]
+MCSTEPS                 5000000
+SWAPEVERY               500
+SWAPMETHOD              random pair
+MOVESET                 MS2
+EXPDIR                  ./mcrex12_onetemp
+PRINTEVERY              100
+TRJEVERY                100
+ENEEVERY                100
+NATIVEDIR               /Users/vincentvoelz/scripts/HPSandbox/trunk/HPSandbox/sequences/clist/hp12
+STOPATNATIVE            1

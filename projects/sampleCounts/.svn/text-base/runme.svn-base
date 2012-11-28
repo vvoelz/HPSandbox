@@ -1,0 +1,4 @@
+# python sample.py ../build12merTmat/microT_AAAAAA.mtx ../build12merTmat/microstates.dat
+python sample_traj.py ../build12merTmat/microT.mtx-sequences/microT_AAAAAA.mtx ../build12merTmat/microstates.dat 1500000 1000 microT_AAAAAA
+python sample_uniform.py ../build12merTmat/microT.mtx-sequences/microT_AAAAAA.mtx ../build12merTmat/microstates.dat 100 1000 microT_AAAAAA
+

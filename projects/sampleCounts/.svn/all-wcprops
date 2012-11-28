@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repo/!svn/ver/276/HPSandbox/trunk/HPSandBox/projects/sampleCounts
+END
+getAdaptiveSampling.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/getAdaptiveSampling.py
+END
+yesAdapt.dat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/yesAdapt.dat
+END
+genTraj.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/genTraj.py
+END
+plotSamplingResults.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/plotSamplingResults.py
+END
+runme_sample_uniform
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repo/!svn/ver/225/HPSandbox/trunk/HPSandBox/projects/sampleCounts/runme_sample_uniform
+END
+uniform.dat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/uniform.dat
+END
+runme
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/!svn/ver/274/HPSandbox/trunk/HPSandBox/projects/sampleCounts/runme
+END
+ssaCalculator.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repo/!svn/ver/223/HPSandbox/trunk/HPSandBox/projects/sampleCounts/ssaCalculator.py
+END
+noAdapt.dat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/noAdapt.dat
+END
+ssaTools.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/ssaTools.py
+END
+eigVals.dat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/274/HPSandbox/trunk/HPSandBox/projects/sampleCounts/eigVals.dat
+END
+sample_uniform.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repo/!svn/ver/274/HPSandbox/trunk/HPSandBox/projects/sampleCounts/sample_uniform.py
+END
+sample.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repo/!svn/ver/274/HPSandbox/trunk/HPSandBox/projects/sampleCounts/sample.py
+END
+rand100.mtx
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/!svn/ver/107/HPSandbox/trunk/HPSandBox/projects/sampleCounts/rand100.mtx
+END
+testSSA.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repo/!svn/ver/276/HPSandbox/trunk/HPSandBox/projects/sampleCounts/testSSA.py
+END
