@@ -20,6 +20,8 @@ usage = """Usage: reweightT.py infile.mtx outfile.mtx microstates.dat sequence
                in the HPHPHPHPPHPH sequence:  AAAAAA  for example
 
     Will write files [sequence].dat containing the stability and slowest, next-slowest implied timescales
+
+    Try: python reweightT.py microT.mtx microT_AAAAAA.mtx microstates.dat AAAAAA
     """
 
 
@@ -38,6 +40,8 @@ reweighted_microTFn = sys.argv[2]
 microstatesFn       = sys.argv[3]
 sequence            = sys.argv[4]
 outfile = sequence + '.dat'
+
+reweighted_macroTFn = reweighted_microTFn.replace('micro','macro')
 
 # Read in transition matrix
 if os.path.exists(microTFn):
@@ -123,7 +127,8 @@ for i in range(newT.shape[0]):
 T_macro = EstimateTransitionMatrix(C_macro)
 print 'T_macro', T_macro
 
-mmwrite(reweighted_microTFn.replace('micro','macro'), T_macro, comment='macrostate '+sequence)
+# Save T_macro to file
+mmwrite(reweighted_macroTFn, T_macro, comment='macrostate '+sequence)
 
 print 'reweighted T_macro:'
 EigAns, result = getTimescalesFromTransitionMatrix(T_macro, NumImpliedTimes = 69)
