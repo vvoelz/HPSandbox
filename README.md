@@ -1,30 +1,37 @@
-README: HPSandbox example programs
+HPSandbox
+===============
+
+HPSandbox is a set of Python objects that allow you to quickly write simple python scripts
+to explore the two-dimensional HP lattice model of proteins of Chan and Dill.
+
+
 Last Updated:  March 2012
 
 GETTING STARTED
+===============
 
 Installation
+---------------
 
 Please define the HPSANDBOXHOME environment variable to be this directory 
 
 In bash: $ export HPSANDBOXHOME=/Users/vince/scripts/HPSandbox/trunk/HPSandbox
 
 COPYRIGHT
+---------------
 This python package is Copyright (C) 2007 Vincent Voelz <vvoelz@stanford.edu>.
 Feel free to modify this code as needed, as long as you can keep it publicly available!
 
-INTRO
 
-HPSandbox is a set of Python objects that allow you to quickly write simple python scripts
-to explore the two-dimensional HP lattice model of proteins of Chan and Dill.
 
 PACKAGE CONTENTS
+---------------
 
-Chain.py           An object to represent the 2D HP lattice chain and its attributes, with method functions.
-Config.py          A data structure to hold configuration parameters.
-Monty.py           A collection of functions to perform Monte Carlo move-set operations on the Chain() object.
-Replica.py         A container object, to hold the Chain() and Monty() objects
-Trajectory.py      A set of functions for creating, reading, writing, and organizing trajectory files
+  * Chain.py           An object to represent the 2D HP lattice chain and its attributes, with method functions.
+  * Config.py          A data structure to hold configuration parameters.
+  * Monty.py           A collection of functions to perform Monte Carlo move-set operations on the Chain() object.
+  * Replica.py         A container object, to hold the Chain() and Monty() objects
+  * Trajectory.py      A set of functions for creating, reading, writing, and organizing trajectory files
 
 /examples          A directory of example scripts
 /sequences         Containing descriptions of the native states of foldable sequences:
