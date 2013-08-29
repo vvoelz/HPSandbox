@@ -60,11 +60,12 @@ how to use the HPSandbox function.
 
 DOCUMENTATION
 
-The following documentation can be obtained using the pydoc standard module of python. For example:
+Documentation can be obtained using the pydoc standard module of python. For example:
 
- >>> from HPSandbox import *
- >>> import pydoc
- >>> pydoc.help(Chain)
+    from HPSandbox import *
+    import pydoc
+    pydoc.help(Chain)
+
 
 Frequently Asked Questions (FAQ)
 ===============
