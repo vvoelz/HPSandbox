@@ -46,8 +46,8 @@ SETUP
 
 In order to get these example scripts to work correctly, you need to set up the following:
 
-1) The HPSandbox directory (i.e python module) must be defined in your PYTHONPATH environment variable
-2) In the /examples folder mcrex.conf file needs to be changed to reflect the absolute pathname
+  *  The HPSandbox directory (i.e python module) must be defined in your PYTHONPATH environment variable
+  *  In the /examples folder mcrex.conf file needs to be changed to reflect the absolute pathname
    of the sequences/clist/hp**  directory.
 
 
@@ -62,9 +62,9 @@ DOCUMENTATION
 
 The following documentation can be obtained using the pydoc standard module of python. For example:
 
->>> from HPSandbox import *
->>> import pydoc
->>> pydoc.help(Chain)
+ >>> from HPSandbox import *
+ >>> import pydoc
+ >>> pydoc.help(Chain)
 
 Frequently Asked Questions (FAQ)
 ===============
