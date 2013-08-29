@@ -66,196 +66,32 @@ The following documentation can be obtained using the pydoc standard module of p
 >>> import pydoc
 >>> pydoc.help(Chain)
 
+Frequently Asked Questions (FAQ)
+===============
 
-CLASSES
-    Chain
-    
-    class Chain
-     |  An object to represent the 2D HP lattice chain and its attributes, with method functions.
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(self, config)
-     |      Initialize the Chain object.
-     |  
-     |  contactstate(self)
-     |      Return the contact state of the chain as a list of (res1,res2) contacts (duples),
-     |      where the residue numbering starts at 0.
-     |  
-     |  grow(self)
-     |      Add a new link onto the chain vector, updating the coords and viability correspondingly.
-     |  
-     |  hpstr2bin(self)
-     |      Convert a string of type 'HPHPHPPPHHP' to a list of 1s and 0s.
-     |  
-     |  lastvec(self)
-     |      Report the last entry on the list.
-     |  
-     |  nonsym(self)
-     |      Many of the conformations are related by rotations and reflections.
-     |      We define a "non-symmetric" conformation to have the first direction '0'
-     |      and the first turn be a '1' (right turn)
-     |      
-     |      nonsym() returns 1 if the vec list is non-symmetric, 0 otherwise
-     |  
-     |  shift(self)
-     |      Shifts the chain vector to the 'next' list, according to an enumeration scheme where
-     |      the most distal chain vector is incremented 0->1->2->3.  After 3, the most distal vector
-     |      element is removed, and the next most distal element is incremented.  If there are multiple
-     |      "3" vectors, this process is done recursively.
-     |      
-     |      Example:
-     |          [0,0,0,0] --> [0,0,0,1] 
-     |          [0,0,1,2] --> [0,0,1,3] 
-     |          [0,1,0,3] --> [0,1,1] 
-     |          [0,3,3,3] --> [1]
-     |      
-     |      This operation is very useful for enumerating the full space of chain conformations.
-     |      shift()  will also update the coords and the viability, accordingly.
-     |      
-     |      RETURN VALUES
-     |      
-     |          returns 1 if its the last possible "shift" --> i.e. if it's all 3's, the search is done
-     |          returns 0 otherwise
-     |  
-     |  vec2coords(self, thisvec)
-     |      Convert a list of chain vectors to a list of coordinates (duples).
-     |  
-     |  viability(self, thesecoords)
-     |      Return 1 if the chain coordinates are self-avoiding, 0 if not.
+What can HPSandbox do?
+----------------------
+HPSandbox can either 1) enumerate, or 2) perform Monte Carlo "dynamics" for 2-dimensional, square-lattice "bead-on-a-string" type chains.
 
+How long a chain can I simulate?
+----------------------
+It depends on how long you are willing to wait. For instance, all conformations of 16-mers can be enumerated in a few minutes on a typical personal computer. Each increase in chain length adds a factor of about 2.7 to the calculation.
 
-    Config
+Can I use other potentials besides the HP model?
+----------------------
+Sure! But you'll have to put it in yourself. The code is designed for HP sequences, so if you want to study a model using beads of only two flavors, it is easy to just modify theMonty.energy()class function. More complicated models would require a more thorough, but straightforward reworking of the code.
 
-    class Config
-     |  A data structure to hold all the configuration data for an HP model calculation.
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(self, filename=None)
-     |      Initialize the configuration data structure, and default values.
-     |  
-     |  print_config(self)
-     |  
-     |  read_configfile(self, filename)
-     |      Read in configuration parameters from file.  The file should have formatted rows
-     |      consisting of two fields, separated by white-space (or any non-printing characters, like tabs):
-     |      
-     |      HPSTRING              PHPPHPPPHP 
-     |      INITIALVEC           [0,0,0,0,0,0,0,0,0,0]
-     |      ....
+What are the reference(s) for the HP 2D Model?
+----------------------
+Lau, K.F. and K.A. Dill. A Lattice Statistical Mechanics Model of the Conformational and Sequence Spaces of Proteins. Macromolecules 22: 3986-3997 (1989).
+Dill, K.A., S. Bromberg, K. Yue, K.M. Fiebig, D.P. Yee, P.D. Thomas, and H.S. Chan. Principles of Protein Folding - A Perspective From Simple Exact Models. Protein Science 4: 561-602, 1995.
+Lau and Dill (1989) is the first use of the HP model, while Dill et al. (1995) is a more comprehensive review.
 
+What movesets are used for the Monte Carlo routines in HPSandbox?
+----------------------
+The movesets are described in Dill et al. Protein Science 4: 561-602, 1995:
 
-    DistRestraint
-
-    class DistRestraint
-     |  For now, this is a harmonic constraint over a squared distance D = d^2
-     |  where D = sum_{i,j} d^2_ij over all contacts.
-     |  
-     |  Methods defined here:
-     |  
-     |  D(self, chain)
-     |      Return the sum of squared-distances over the selected contacts.
-     |  
-     |  __init__(self, contacts, kspring)
-     |      Initialize the DistRestraint object
-     |  
-     |  energy(self, chain)
-     |      return the energy of the distance restraint
-
-
-    Monty
-
-    class Monty
-     |  A collection of functions to perform Monte Carlo move-set operations on an HP lattice Chain object.
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(self, config, temp, chain)
-     |      Initialize the Monte Carlo object...
-     |  
-     |  energy(self, chain)
-     |      Calculate potential energy of the chain.
-     |  
-     |  metropolis(self, replica)
-     |      Accept Chain.nextvec over Chain.vec according to a Metropolis criterion.
-     |  
-     |  move1(self, replica)
-     |      Apply moveset 'MC1' to the chain:
-     |      (i)  three-bead flips
-     |      (ii) end flips
-     |      
-     |      REFERENCE: Dill and Chan, 1994, 1996.
-     |  
-     |  move2(self, replica)
-     |      Apply moveset MC2 to the chain:
-     |      (i)   three-bead flips
-     |      (ii)  end flips
-     |      (iii) crankshaft moves
-     |      (iv)  rigid rotations
-     |      
-     |      REFERENCE:  Dill and Chan, 1994, 1996
-     |  
-     |  
-     |  move3(self, replica)
-     |      Apply moveset 'MC3' to the chain.
-     |      This is just a simple set to change the direction of a single chain link.
-     |      Example:
-     |          [0,0,0,0,0] --> [0,0,1,0,0]
-     |      where {0,1,2,3}={n,e,s,w} direction
-     |      
-     |      About 5% viable moves are expected.
-     |  
-     |  move4(self, replica)
-     |      Apply moveset 'MC4' to the chain:
-     |      This is another vert simple moveset, to just change one angle in a rigid rotation
-     |      Like 'MS3', this generates about 5% viable moves.
-
-
-    Replica
-
-    class Replica
-     |  A container object, to hold the Chain() and Monty() objects
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(self, config, repnum)
-     |      Initialize the Replica() object.
-
-
-    Trajectory
-
-    class Trajectory
-     |  A set of functions for creating, reading, writing, and organizing trajcetory files
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(self, replicas, config)
-     |      Initialize the trajectory object
-     |  
-     |  cleanup(self, replicas)
-     |      Write any remaining points in the trajectory and energy buffers to file,
-     |      and close any open file handles.
-     |  
-     |  dump_enequeue(self, replica)
-     |      Dumps the queued energy values to the respective files and clears them for further use.
-     |  
-     |  dump_trjqueue(self, replica)
-     |      Dump the queue to the the respective files and clear them for future use.
-     |  
-     |  mkdir(self, pathname)
-     |      Automatically create directory if it doesn't exist
-     |  
-     |  queue_ene(self, replica)
-     |      Queue an energy value to the buffer, for writing to file.
-     |  
-     |  queue_trj(self, replica)
-     |      Queue a trajectory point to the buffer for writing to file
-     |  
-     |  write_eneheader(self, filename, replica)
-     |      Write column headers for the energy file.
-
-
+<img src="http://dillgroup.stonybrook.edu/images/code-and-toys/hp-sandbox/movesets.png">
 
 
 Vincent Voelz
