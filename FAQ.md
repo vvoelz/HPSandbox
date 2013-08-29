@@ -23,4 +23,4 @@ What movesets are used for the Monte Carlo routines in HPSandbox?
 ----------------------
 The movesets are described in Dill et al. Protein Science 4: 561-602, 1995:
 
-<img href="http://dillgroup.stonybrook.edu/images/code-and-toys/hp-sandbox/movesets.png">
+<img src="http://dillgroup.stonybrook.edu/images/code-and-toys/hp-sandbox/movesets.png">
