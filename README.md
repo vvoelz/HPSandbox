@@ -19,7 +19,7 @@ In bash: $ export HPSANDBOXHOME=/Users/vince/scripts/HPSandbox/trunk/HPSandbox
 
 COPYRIGHT
 ---------------
-This python package is Copyright (C) 2007 Vincent Voelz <vvoelz@stanford.edu>.
+This python package is Copyright (C) 2007 Vincent Voelz <voelz@temple.edu>.
 Feel free to modify this code as needed, as long as you can keep it publicly available!
 
 
