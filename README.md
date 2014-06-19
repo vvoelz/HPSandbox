@@ -96,4 +96,4 @@ The movesets are described in Dill et al. Protein Science 4: 561-602, 1995:
 
 
 Vincent Voelz
-vvoelz@stanford.edu
+voelz@temple.edu
