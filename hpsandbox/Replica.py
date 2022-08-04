@@ -2,10 +2,10 @@
 #
 # Replica.py    
 
-from Config import *
-import Chain
-import Monty
-from Trajectory import *
+#from Config import *
+#import Chain
+#import Monty
+#from Trajectory import *
 
 import random
 import string
