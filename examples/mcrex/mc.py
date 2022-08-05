@@ -17,7 +17,7 @@ def numcontacts(coords):
       for d in range((c+3),len(coords)):
 
         if (  abs(coords[c][0]-coords[d][0]) + abs(coords[c][1]-coords[d][1])   ) == 1:
-	    num = num + 1
+            num = num + 1
 
     return num
     
@@ -56,7 +56,7 @@ for i in range(0,mcsteps):
      oldvec = []
      for v in range(0,len(vec)):
          oldvec.append(vec[v])
-	 
+
      vec[vecindex] = ( vec[vecindex] + direction) % 4
     
      coords = [(0,0)]
@@ -64,42 +64,42 @@ for i in range(0,mcsteps):
      x = 0
      y = 0
      for i in range(0,len(vec)):
-	 if vec[i] == 0:
-	     y = y + 1
-	 if vec[i] == 1:
-	     x = x + 1
-	 if vec[i] == 2:
-	     y = y - 1
-	 if vec[i] == 3:
-	     x = x - 1
-  	 coords.append((x,y))
+         if vec[i] == 0:
+             y = y + 1
+         if vec[i] == 1:
+             x = x + 1
+         if vec[i] == 2:
+             y = y - 1
+         if vec[i] == 3:
+             x = x - 1
+         coords.append((x,y))
 
 
      ### ...and determine whether it's viable	
      viable = 1
      for c in coords:
-	 if coords.count(c) > 1:
-	     viable = 0
-	     break
+         if coords.count(c) > 1:
+             viable = 0
+             break
 
      if viable == 0:
          for v in range(0,len(vec)):
-	     vec[v] = oldvec[v]
-	     
+             vec[v] = oldvec[v]
+
      else:
          ### accept with Metroplis criterion	 
-	 n = numcontacts(coords)
-	 boltzfactor = math.exp(n*epsilon/(k*T))
-	 if g.random() > boltzfactor:
-	     vec[v] = oldvec[v]
-	 else:
-	     Z[n] = Z[n] + boltzfactor        
+         n = numcontacts(coords)
+         boltzfactor = math.exp(n*epsilon/(k*T))
+         if g.random() > boltzfactor:
+             vec[v] = oldvec[v]
+         else:
+             Z[n] = Z[n] + boltzfactor
      
-     # print 'Z[c] =',Z
+     # print('Z[c] =',Z)
      tmp = ''
      for c in range(0,len(Z)):
          F[c] = -1.0*k*T*math.log(max(Z[c],0.0001)) - -1.0*k*T*math.log(max(Z[0],0.0001))
          tmp = tmp + str(F[c]) + '\t' 
-     	 
-     print tmp
+
+     print(tmp)
      
