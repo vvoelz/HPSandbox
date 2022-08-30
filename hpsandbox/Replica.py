@@ -1,6 +1,5 @@
-#! /usr/bin/python
 #
-# Replica.py    
+# Replica.py
 
 #from Config import *
 #import Chain
@@ -12,6 +11,8 @@ import string
 import math
 import sys
 import os
+from .Chain import Chain
+from .Monty import Monty
 
 class Replica:
     """A container object, to hold the Chain() and Monty() objects"""
@@ -21,8 +22,8 @@ class Replica:
 
         temp = config.REPLICATEMPS[repnum]
         self.repnum = repnum
-        self.repname = 'rep' + string.zfill(str(repnum),2)
+        self.repname = 'rep' + str(repnum).zfill(2)
         self.repdir = config.DATADIR + self.repname
-        self.chain = Chain.Chain(config)
-        self.mc = Monty.Monty(config,temp,self.chain)    
-    
+        self.chain = Chain(config)
+        self.mc = Monty(config,temp,self.chain)
+
