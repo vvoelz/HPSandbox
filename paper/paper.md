@@ -24,7 +24,20 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
+The two-dimensional "hydrophobic-polar" (HP) model of Chan and Dill is a simple statistical
+mechanical model designed to capture the basic physics protein folding.
+It has been used extensively to study basic principles governing the energy landscape of proteins,
+kinetics and pathways of folding, the designability of protein sequences, and the performance of 
+global optimization algorithms.   The HP model is a 'toy' 
+
+The thermodynamics of the HP model is completely determined by the sequence
+
+
+
+The model is useful because 
+*
+
+modforces on stars, galaxies, and dark matter under external gravitational
 fields lead to the dynamical evolution of structures in the universe. The orbits
 of these bodies are therefore key to understanding the formation, history, and
 future state of galaxies. The field of "galactic dynamics," which aims to model
@@ -33,6 +46,12 @@ is now well-established, commonly taught, and frequently used in astronomy.
 Aside from toy problems and demonstrations, the majority of problems require
 efficient numerical tools, many of which require the same base code (e.g., for
 performing numerical orbit integration).
+
+# Theory
+
+Description of the theory goes here.
+
+
 
 # Statement of need
 
