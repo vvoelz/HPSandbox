@@ -1,9 +1,12 @@
 # README
 
+## Exhaustive enumeration of all chain conformations 
 
-## Description 
 
- 
+This script will perform a full enumeration of conformational space
+and calculate energiues for a given HP sequence
+
+```
 Usage: `python enumerate.py <configfile>`
 
 Try:  `$ python enumerate.py enumerate.conf`
@@ -19,9 +22,10 @@ The problem tabulates:
        of microscopic conformations all sharing a unique set of interresidue contacts. 
 
 These values are printed as output.
+```
 
 
-## The configuration file `enumerate.conf`
+The configuration file `enumerate.conf`:
 
 ```
 HPSTRING                HPHPHPHPPHPH
