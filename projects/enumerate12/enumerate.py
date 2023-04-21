@@ -76,14 +76,14 @@ if __name__ == '__main__':
                     # tally the number of contacts
                     state = replicas[0].chain.contactstate()
                     ncontacts = len(state)
-                    if contacts.has_key(ncontacts) == False:
+                    if not ncontacts in contacts:
                         contacts[ncontacts] = 1
                     else:
                         contacts[ncontacts] = contacts[ncontacts] + 1
 
                     # tally the contact state
                     this_state_repr = repr(state)
-                    if contact_states.has_key(this_state_repr) == False:
+                    if not this_state_repr in contact_states:
                         contact_states[this_state_repr] = 1
                     else:
                         contact_states[this_state_repr] = contact_states[this_state_repr] + 1
