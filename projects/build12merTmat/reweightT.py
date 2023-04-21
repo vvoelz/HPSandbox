@@ -30,7 +30,7 @@ from HelperTools  import *
 # Main program
 
 if len(sys.argv) < 5:
-    print usage
+    print(usage)
     sys.exit(1)
 
 microTFn            = sys.argv[1]
@@ -42,9 +42,9 @@ outfile = sequence + '.dat'
 # Read in transition matrix
 if os.path.exists(microTFn):
     T = mmread(microTFn)
-    print T
+    print(T)
 else:
-    print "Can't find file:", microTFn, '...exiting'
+    print("Can't find file:", microTFn, '...exiting')
     sys.exit(1)
 
 # Read in microstate info
@@ -57,7 +57,7 @@ m =  MicrostateInfo(microstatesFn)
 # Build sequence information
 if os.path.exists(reweighted_microTFn):
         newT = mmread(reweighted_microTFn)
-        print newT
+        print(newT)
 else:
         MJdict = build_MJ_dict()
         residues = "Cys Met Phe Ile Leu Val Trp Tyr Ala Gly Thr Ser Asn Gln Asp Glu His Arg Lys Pro".split()
@@ -66,7 +66,7 @@ else:
         initial_sequence = [olc2tlc(sequence[i]) for i in range(len(sequence))]
         for i in resIndices:
             seqdict[i] = initial_sequence[resIndices.index(i)]
-        print 'seqdict = ', seqdict
+        print('seqdict = ', seqdict)
         beta = 1.0
         newT = reweightTransitionMatrix(T, seqdict, MJdict, m.ContactStateIndices, m.microContactStates, beta)
 
@@ -75,23 +75,23 @@ else:
 CalculateOriginalTimescales = True #False
 
 if CalculateOriginalTimescales:
-    print 'Original T:'
+    print('Original T:')
     EigAns, result = getTimescalesFromTransitionMatrix(T, NumImpliedTimes = 10)
-    print EigAns
-    print result
+    print(EigAns)
+    print(result)
 
     # calculate the stability of the native state
     INative = np.array(m.ContactStateIndices)==m.NativeContactStateIndex
     stability = np.real( EigAns[1][INative,0]/EigAns[1][:,0].sum() )
     # print stability and timescale info 
-    print '#stability\tslowest\tnext-slowest'
-    print '%8.3f\t%16.8f\t%16.8f'%(stability, result[0,1], result[1,1])
+    print('#stability\tslowest\tnext-slowest')
+    print('%8.3f\t%16.8f\t%16.8f'%(stability, result[0,1], result[1,1]))
 
 
-print 'reweighted T:'
+print('reweighted T:')
 EigAns, result = getTimescalesFromTransitionMatrix(newT, NumImpliedTimes = 10)
-print EigAns
-print result
+print(EigAns)
+print(result)
 
 # calculate the stability of the native state
 INative = np.array(m.ContactStateIndices)==m.NativeContactStateIndex
@@ -99,7 +99,7 @@ stability = np.real( EigAns[1][INative,0]/EigAns[1][:,0].sum() )
 # print stability and timescale info 
 header = '#sequence\tstability\tslowest\tnext-slowest'
 line = '%s\t%8.3f\t%16.8f\t%16.8f'%(sequence, stability, result[0,1], result[1,1])
-print header+'\n'+line
+print(header+'\n'+line)
 # write stability and timescale info to output file
 fout = open(outfile,'w')
 fout.write(header+'\n')
@@ -112,8 +112,8 @@ NumContactStates = len(m.uniqueContactStates)
 C_macro  = scipy.sparse.lil_matrix((int(NumContactStates),int(NumContactStates)))
 
 newT_micro = newT.tolil()
-print 'newT_micro.rows', newT_micro.rows
-print 'newT_micro.data', newT_micro.data
+print('newT_micro.rows', newT_micro.rows)
+print('newT_micro.data', newT_micro.data)
 
 for i in range(newT.shape[0]):
     for j in range(len(newT_micro.rows[i])):
@@ -121,17 +121,17 @@ for i in range(newT.shape[0]):
         C_macro[m.ContactStateIndices[i], m.ContactStateIndices[k]] += newT_micro.data[i][j]
 
 T_macro = EstimateTransitionMatrix(C_macro)
-print 'T_macro', T_macro
+print('T_macro', T_macro)
 
-print 'reweighted T:'
+print('reweighted T:')
 EigAns, result = getTimescalesFromTransitionMatrix(T_macro, NumImpliedTimes = 69)
-print EigAns
-print result
+print(EigAns)
+print(result)
 
 # calculate the stability of the native state from the MACROSTATE 
 INative = np.array(range(int(NumContactStates)))==m.NativeContactStateIndex
 stability = np.real( EigAns[1][INative,0]/EigAns[1][:,0].sum() )
 # print stability and timescale info 
-print '#stability\tslowest\tnext-slowest'
-print '%8.3f\t%16.8f\t%16.8f'%(stability, result[0,1], result[1,1])
+print('#stability\tslowest\tnext-slowest')
+print('%8.3f\t%16.8f\t%16.8f'%(stability, result[0,1], result[1,1]))
 

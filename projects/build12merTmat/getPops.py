@@ -11,7 +11,7 @@ usage = """Usage:  python getPops.py tProbsFn.mtx
     will write tProbsFn.Populations.dat"""
 
 if len(sys.argv) < 2:
-    print usage
+    print(usage)
     sys.exit(1)   
 
 tProbsFn = sys.argv[1]

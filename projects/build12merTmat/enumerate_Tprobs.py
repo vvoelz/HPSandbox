@@ -21,7 +21,7 @@ These values are printed as output.
 
 
 import sys
-sys.path.append('/Users/vincentvoelz/scripts/HPSandbox/trunk/HPSandBox/')
+sys.path.append('../../hpsandbox')
 
 from Config import *
 from Chain import *
@@ -45,7 +45,7 @@ g = random.Random(randseed)
 
 
 if len(sys.argv) < 2:
-    print 'Usage:  enumerate_Tprobs.py <configfile>'
+    print('Usage:  enumerate_Tprobs.py <configfile>')
     sys.exit(1)
  
  
@@ -107,9 +107,9 @@ def viability(thesecoords):
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-	print usage
-	sys.exit(1)
-	
+        print(usage)
+        sys.exit(1)
+    
     configfile = sys.argv[1]
     config = Config( filename=configfile)
     if VERBOSE: config.print_config()
@@ -117,10 +117,10 @@ if __name__ == '__main__':
     # create a single Replica
     replicas = [ Replica(config,0) ]
     
-    traj = Trajectory(replicas,config)	# a trajectory object to write out trajectories
+    traj = Trajectory(replicas,config)    # a trajectory object to write out trajectories
 
     nconfs = 0
-    contact_states = {}		# dictionary of {repr{contact state}: number of conformations}
+    contact_states = {}        # dictionary of {repr{contact state}: number of conformations}
     contacts = {}               # dictionary of {number of contacts: number of conformations}
 
 
@@ -138,53 +138,53 @@ if __name__ == '__main__':
     # 
     done = 0
     while not(done):
-	    	    
-	if len(replicas[0].chain.vec) == replicas[0].chain.n-1:    
-	    if replicas[0].chain.viable:		
-		if replicas[0].chain.nonsym():
-		    
-		    # tally the number of contacts
-		    state = replicas[0].chain.contactstate()
-		    ncontacts = len(state)
-		    if contacts.has_key(ncontacts) == False:
-			contacts[ncontacts] = 1
-		    else:
-			contacts[ncontacts] = contacts[ncontacts] + 1
 
-		    # tally the contact state
-		    this_state_repr = repr(state)
-		    if contact_states.has_key(this_state_repr) == False:
-			contact_states[this_state_repr] = 1
-		    else:
-			contact_states[this_state_repr] = contact_states[this_state_repr] + 1
+        if len(replicas[0].chain.vec) == replicas[0].chain.n-1:    
+            if replicas[0].chain.viable:        
+                if replicas[0].chain.nonsym():
+            
+                    # tally the number of contacts
+                    state = replicas[0].chain.contactstate()
+                    ncontacts = len(state)
+                    if contacts.has_key(ncontacts) == False:
+                        contacts[ncontacts] = 1
+                    else:
+                        contacts[ncontacts] = contacts[ncontacts] + 1
 
-		    # tally the number of conformations
-		    nconfs = nconfs + 1
+                    # tally the contact state
+                    this_state_repr = repr(state)
+                    if contact_states.has_key(this_state_repr) == False:
+                        contact_states[this_state_repr] = 1
+                    else:
+                        contact_states[this_state_repr] = contact_states[this_state_repr] + 1
+
+                    # tally the number of conformations
+                    nconfs = nconfs + 1
 
                     microstates.append(copy.copy(replicas[0].chain.vec))
                     microindex[ replicas[0].chain.vec2str(replicas[0].chain.vec) ] = len(microstates)-1 
                     microContactStates.append( state )
 
-		    # write to trajectory
-		    #if (nconfs % config.TRJEVERY) == 0:
-	            #		traj.queue_trj(replicas[0])
-		    # print progress
-		    #if (nconfs % config.PRINTEVERY) == 0:
-		    #	print '%-4d confs  %s'%(nconfs,replicas[0].chain.vec)
+                    # write to trajectory
+                    # if (nconfs % config.TRJEVERY) == 0:
+                    #        traj.queue_trj(replicas[0])
+                    # print progress
+                    # if (nconfs % config.PRINTEVERY) == 0:
+                    #    print('%-4d confs  %s'%(nconfs,replicas[0].chain.vec))
     
-		done = replicas[0].chain.shift()
-		    
-	    else:
-		done = replicas[0].chain.shift()
+                done = replicas[0].chain.shift()
+                    
+            else:
+                done = replicas[0].chain.shift()
 
-	else:
-	    if replicas[0].chain.viable:
-		replicas[0].chain.grow()
-	    else:
-		done = replicas[0].chain.shift()
+        else:
+            if replicas[0].chain.viable:
+                replicas[0].chain.grow()
+            else:
+                done = replicas[0].chain.shift()
 
-	if replicas[0].chain.vec[0] == 1:    # skip the other symmetries
-	    break	
+        if replicas[0].chain.vec[0] == 1:    # skip the other symmetries
+            break    
     #
     #
     #################
@@ -195,29 +195,29 @@ if __name__ == '__main__':
     traj.cleanup(replicas)
     
     # print out the density of contact states
-    print
-    print 'DENSITY of CONTACT STATES:'
-    print '%-40s %s'%('contact state','number of conformations')
+    print()
+    print('DENSITY of CONTACT STATES:')
+    print('%-40s %s'%('contact state','number of conformations'))
     for state in contact_states.keys():
-	print '%-40s %d'%(state, contact_states[state])
+        print('%-40s %d'%(state, contact_states[state]))
     
     # print out the density of states (energies)
-    print 
-    print 'DENSITY of STATES (in energies/contacts):'
-    print '%-20s %-20s %s'%('number of contacts','energy (kT)','number of conformations')
+    print()
+    print('DENSITY of STATES (in energies/contacts):')
+    print('%-20s %-20s %s'%('number of contacts','energy (kT)','number of conformations'))
     for c in contacts.keys():
-	print '%-20d %-20d %d'%(c,config.eps*c,contacts[c])
-    print
-    print 'at T = %4.1f K'%config.T
+        print('%-20d %-20d %d'%(c,config.eps*c,contacts[c]))
+    print()
+    print('at T = %4.1f K'%config.T)
 
     # write a file describing each microstate
     microstateFn = 'microstates.dat'
-    print 'Writing %s ....'%microstateFn, 
+    print('Writing %s ....'%microstateFn, end='') 
     fout = open(microstateFn, 'w')
     for i in range(len(microstates)):
         fout.write('%d\t%s\t%d\t%s\n'%(i, repr(microstates[i]), len(microContactStates[i]), repr(microContactStates[i])))
     fout.close()
-    print 'Done.'
+    print('Done.')
 
 
     ############
@@ -227,94 +227,94 @@ if __name__ == '__main__':
     microTFn = 'microT.mtx'
     if os.path.exists(microTFn):
          T = mmread(microTFn)
-         print T
+         print(T)
     else:
 
-      NumStates = len(microstates)
-      C=scipy.sparse.lil_matrix((int(NumStates),int(NumStates)))  # Lutz: why are we using float for count matrices?
+        NumStates = len(microstates)
+        C=scipy.sparse.lil_matrix((int(NumStates),int(NumStates)))  # Lutz: why are we using float for count matrices?
 
-      for i in range(len(microstates)):
+        for i in range(len(microstates)):
 
-        if i%100 == 0:
-          print 'computing (iso-energetic) transitions from state', i, 'of', NumStates
+            if i%100 == 0:
+                print('computing (iso-energetic) transitions from state', i, 'of', NumStates)
 
-        # iterate through all possible moves
-        for vecindex in range(0,replicas[0].chain.n):
-          for direction in [-1,1]:
-            for case in [0,1,2]:
+            # iterate through all possible moves
+            for vecindex in range(0,replicas[0].chain.n):
+              for direction in [-1,1]:
+                for case in [0,1,2]:
 
-              vec = microstates[i]
-              nextvec = copy.copy(microstates[i])
+                  vec = microstates[i]
+                  nextvec = copy.copy(microstates[i])
 
-              # if possible, 1/3 of the time do a three-bead flip (dirs must be different)
-              if (case == 0) and (vecindex < len(nextvec)-1):
-                tmp1 = nextvec[vecindex]
-                tmp2 = nextvec[vecindex+1]
-                if (tmp1 != tmp2):
-                    nextvec[vecindex] = tmp2
-                    nextvec[vecindex + 1] = tmp1
-                else:
-                    ### default: do a rigid rotation
-                    for v in range(vecindex,len(nextvec)):
-                        nextvec[v] = (nextvec[v] + direction) % 4
+                  # if possible, 1/3 of the time do a three-bead flip (dirs must be different)
+                  if (case == 0) and (vecindex < len(nextvec)-1):
+                      tmp1 = nextvec[vecindex]
+                      tmp2 = nextvec[vecindex+1]
+                      if (tmp1 != tmp2):
+                          nextvec[vecindex] = tmp2
+                          nextvec[vecindex + 1] = tmp1
+                      else:
+                          ### default: do a rigid rotation
+                          for v in range(vecindex,len(nextvec)):
+                              nextvec[v] = (nextvec[v] + direction) % 4
 
-              # if possible, 1/3 of the time do a crankshft (1st and 3rd dirs must be different)
-              elif (case == 2) & (vecindex < len(nextvec)-2):
-                tmp1 = nextvec[vecindex]
-                tmp2 = nextvec[vecindex+2]
-                if (tmp1 != tmp2):
-                    ### crankshaft move ###
-                    nextvec[vecindex] = tmp2
-                    nextvec[vecindex + 2] = tmp1
-                else:
-                    ### default: do a rigid rotation
-                    for v in range(vecindex,len(nextvec)):
-                        nextvec[v] = (nextvec[v] + direction) % 4
+                  # if possible, 1/3 of the time do a crankshft (1st and 3rd dirs must be different)
+                  elif ((case == 2) and (vecindex < len(nextvec)-2)):
+                      tmp1 = nextvec[vecindex]
+                      tmp2 = nextvec[vecindex+2]
+                      if (tmp1 != tmp2):
+                          ### crankshaft move ###
+                          nextvec[vecindex] = tmp2
+                          nextvec[vecindex + 2] = tmp1
+                      else:
+                          ### default: do a rigid rotation
+                          for v in range(vecindex,len(nextvec)):
+                              nextvec[v] = (nextvec[v] + direction) % 4
 
-              # the remaining 1/3 of the time, do a rigid rotation
-              else:
-                ### default: do a rigid rotation
-                for v in range(vecindex,len(nextvec)):
-                    nextvec[v] = (nextvec[v] + direction) % 4
-
-
-              ### Find microstate index we're transition to
-
-              # correct rotational symmetry
-              if nextvec[0] != 0:
-                for v in range(len(nextvec)):
-                  nextvec[v] = (nextvec[v] - nextvec[0]) % 4
-
-              # correct mirror symmetry
-              if not nonsym(nextvec):
-                for v in range(len(nextvec)):
-                  nextvec[v] = (-nextvec[v]) % 4
-
-              if viable(nextvec):
-                  # add to the count matrix
-                  j = microindex[replicas[0].chain.vec2str(nextvec)]
-                  C[i,j] += 1.0
-
-                  if (0): 
-                    print '\t%s(%d)'%(replicas[0].chain.vec2str(vec), i),  '-->' ,
-                    print '\t%s(%d)'%(replicas[0].chain.vec2str(nextvec), j)
-              else:
-                  C[i,i] += 1.0
-
-      # Calculate the eigen problem
-      if (1):
-          T = EstimateTransitionMatrix(C)
-      else:
-          weights = np.asarray(C.sum(axis=1)).flatten()
-          D=scipy.sparse.dia_matrix((1./weights,0),C.shape).tocsr()
-          T=D.dot(C)
-
-      print 'Writing microstate transition matrix to %s ...'%microTFn,
-      mmwrite(microTFn, T, precision=32)   # write the transition matrix to file (for next time)
-      print '...Done.'
+                  # the remaining 1/3 of the time, do a rigid rotation
+                  else:
+                      ### default: do a rigid rotation
+                      for v in range(vecindex,len(nextvec)):
+                          nextvec[v] = (nextvec[v] + direction) % 4
 
 
-    print 'Computing Implied Timescales....'
+                  ### Find microstate index we're transition to
+
+                  # correct rotational symmetry
+                  if nextvec[0] != 0:
+                      for v in range(len(nextvec)):
+                          nextvec[v] = (nextvec[v] - nextvec[0]) % 4
+
+                  # correct mirror symmetry
+                  if not nonsym(nextvec):
+                      for v in range(len(nextvec)):
+                          nextvec[v] = (-nextvec[v]) % 4
+
+                  if viable(nextvec):
+                      # add to the count matrix
+                      j = microindex[replicas[0].chain.vec2str(nextvec)]
+                      C[i,j] += 1.0
+
+                      if (0): 
+                          print('\t%s(%d)'%(replicas[0].chain.vec2str(vec), i),  '-->' , end='')
+                          print('\t%s(%d)'%(replicas[0].chain.vec2str(nextvec), j))
+                  else:
+                      C[i,i] += 1.0
+
+        # Calculate the eigen problem
+        if (1):
+            T = EstimateTransitionMatrix(C)
+        else:
+            weights = np.asarray(C.sum(axis=1)).flatten()
+            D=scipy.sparse.dia_matrix((1./weights,0),C.shape).tocsr()
+            T=D.dot(C)
+
+        print('Writing microstate transition matrix to %s ...'%microTFn, end='')
+        mmwrite(microTFn, T, precision=32)   # write the transition matrix to file (for next time)
+        print('...Done.')
+
+
+    print('Computing Implied Timescales....')
     LagTime = 1.   # one step
     NumImpliedTimes = 10
     EigAns=GetEigenvectors(T,NumImpliedTimes+1,Epsilon=1) #TJL: set Epsilon high, should not raise err here     
@@ -328,5 +328,5 @@ if __name__ == '__main__':
     result[:,0] = lagTimes
     result[:,1] = impTimes
 
-    print result
+    print(result)
 
