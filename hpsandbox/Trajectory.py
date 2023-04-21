@@ -239,3 +239,4 @@ class Trajectory:
             self.byreplica_temp[i].close()	# file handle - keeps track of temp number
 
 
+
