@@ -1,7 +1,7 @@
 # Projects using HPSandbox
 
 Here you will find several coding projects that use the HPSandbox data structures
-to perform various calculations
+to perform various calculations.
 
 * enumerate12 - Description
 * mcrex12 - Descvriptio
@@ -9,14 +9,20 @@ to perform various calculations
 * toy12mer
 
 
+## Markov Models of lattice protein dynamics
+
 The following projects are related to work presented in Voelz et al 2014, in which a
 Markov Model of folding is constructed for the 12-mer sequence HPHPHPHPPHPH.  This work
-uses a more sophisticated energy function with adjustable and protein-like interaction
+uses a more sophisticated energy function with adjustable protein-like interaction
 strengths.
 
 * build12merTmat
 * sampleCounts
 * sequenceDesignS
+
+## Search Algorithms
+
+TBA
 
 
 ## Reference
