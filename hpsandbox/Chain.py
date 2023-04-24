@@ -102,7 +102,6 @@ class Chain:
         for c in thesecoords:
             if thesecoords.count(c) > 1:
                 self.viable = 0
-            break
 
         return self.viable
 
