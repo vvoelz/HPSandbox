@@ -1,5 +1,4 @@
-#
-Projects using HPSandbox
+# Projects using HPSandbox
 
 Here you will find several coding projects that use the HPSandbox data structures
 to perform various calculations.
