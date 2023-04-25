@@ -156,8 +156,8 @@ class SurprisalCalculator:
                 sensitivities2[j_state] /= total_counts
 
             sensitivities = np.append(sensitivities1, sensitivities2)
-            #print 'sensitivities.shape', sensitivities.shape
-            #print 'diagonal_covariances.shape', diagonal_covariances.shape
+            #print('sensitivities.shape', sensitivities.shape)
+            #print('diagonal_covariances.shape', diagonal_covariances.shape)
             variance = (sensitivities.T).dot(diagonal_covariances).dot(sensitivities)
 
         return variance
@@ -185,16 +185,32 @@ class SurprisalCalculator:
             surprisals.append(surprisal)
         return np.array(surprisals).var()
 
+
 if __name__ == '__main__':
+
+    usage = """Usage:   python Surprisal.py Tmat1 Tmat2
+
+        INPUT: Tmat2 and Tmat2 are the filenames of two matrices
+               of the Matrix Market type (extensions .mtx, .mtz.gz).
+               These can be dense or sparse.
+
+        OUTPUT Suprisal calculation info printed to standard output; 
+        """
+
+    if len(sys.argv) < 3:
+        print(usage)
+        sys.exit(1)
+
     sparse1 = mmread(sys.argv[1])
     sparse2 = mmread(sys.argv[2])
+
     obj = SurprisalCalculator(sparse1, sparse2) 
-    print 'state\tsurprisal\tVariances (analytical)\tVariances (bootstrap)\tN_row_counts'
+    print('state\tsurprisal\tVariances (analytical)\tVariances (bootstrap)\tN_row_counts')
     for istate in range(72):
         counts1, counts2 = obj.prepare_sparse_matrices(istate)
         surprisal = obj.calculate_surprisal(counts1, counts2, weighted=True)
         var_analytical = obj.estimate_surprisal_variance_analytical(istate)
         var_bootstrap  = obj.estimate_surprisal_variance_bootstrap(counts1, counts2, n_bootstraps=1000, weighted=True)
         num_row_counts = np.sum(counts1) + np.sum(counts2)
-        print '%d\t%e\t%e\t%e\t%d'%(istate, surprisal, var_analytical, var_bootstrap, num_row_counts)
-    #print "Weighted Surprisals", obj.calculate_all_surprisal(weighted=True)                
+        print('%d\t%e\t%e\t%e\t%d'%(istate, surprisal, var_analytical, var_bootstrap, num_row_counts))
+    #print("Weighted Surprisals", obj.calculate_all_surprisal(weighted=True))

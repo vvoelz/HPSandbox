@@ -102,7 +102,7 @@ def olc2tlc(resname):
 
 
 def getTimescalesFromTransitionMatrix(T, NumImpliedTimes = 10, LagTime = 1., Verbose=False):
-    if Verbose: print 'Computing Implied Timescales....'
+    if Verbose: print('Computing Implied Timescales....')
     EigAns=GetEigenvectors(T,NumImpliedTimes+1,Epsilon=1) #TJL: set Epsilon high, should not raise err here     
 
     # make sure to leave off equilibrium distribution
@@ -145,12 +145,12 @@ def draw_index(probs, n_picks=1, UseFastMethod=True):
 
 
 def reweightTransitionMatrix(T, sequence, MJdict, ContactStateIndices, microContactStates, beta, Verbose=True):
-    if Verbose: print 'reweighting the transition matrix to reflect the sequence...'
+    if Verbose: print('reweighting the transition matrix to reflect the sequence...')
     newT = T.tolil()
     rows, cols = newT.nonzero()
     for k in range(len(rows)):
         if k%10000 == 0:
-           if Verbose:  print k, 'of', len(rows), 'nonzero entries'
+           if Verbose:  print(k, 'of', len(rows), 'nonzero entries')
         i, j = rows[k], cols[k]
         if ContactStateIndices[i] != ContactStateIndices[j]:
             u_i = energy(microContactStates[i], sequence, MJdict)
@@ -194,10 +194,10 @@ class MicrostateInfo(object):
             self.ContactStateIndices = [self.uniqueContactStates.index(self.microContactStates[i]) for i in range(len(self.microstates))]
             self.NativeMicrostateIndex = self.microContactStates.index( self.NativeContactState )
             self.NativeContactStateIndex = self.uniqueContactStates.index(self.NativeContactState)
-            print 'NativeContactState', self.NativeContactState
-            print 'NativeMicrostateIndex', self.NativeMicrostateIndex
+            print('NativeContactState', self.NativeContactState)
+            print('NativeMicrostateIndex', self.NativeMicrostateIndex)
                  
         else:
-            print "Can't find file:", microstatesFn, '...exiting'
+            print("Can't find file:", microstatesFn, '...exiting')
             raise Exception
             
