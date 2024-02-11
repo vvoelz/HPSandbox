@@ -84,8 +84,9 @@ Sure! But you'll have to put it in yourself. The code is designed for HP sequenc
 
 What are the reference(s) for the HP 2D Model?
 ----------------------
-Lau, K.F. and K.A. Dill. A Lattice Statistical Mechanics Model of the Conformational and Sequence Spaces of Proteins. Macromolecules 22: 3986-3997 (1989).
-Dill, K.A., S. Bromberg, K. Yue, K.M. Fiebig, D.P. Yee, P.D. Thomas, and H.S. Chan. Principles of Protein Folding - A Perspective From Simple Exact Models. Protein Science 4: 561-602, 1995.
+1. Lau, K.F. and K.A. Dill. A Lattice Statistical Mechanics Model of the Conformational and Sequence Spaces of Proteins. Macromolecules 22: 3986-3997 (1989).
+2. Dill, K.A., S. Bromberg, K. Yue, K.M. Fiebig, D.P. Yee, P.D. Thomas, and H.S. Chan. Principles of Protein Folding - A Perspective From Simple Exact Models. Protein Science 4: 561-602, 1995.
+
 Lau and Dill (1989) is the first use of the HP model, while Dill et al. (1995) is a more comprehensive review.
 
 What movesets are used for the Monte Carlo routines in HPSandbox?
